@@ -1,0 +1,3 @@
+export const STATE_INFO_STARTED = "myApp/STATE_INFO_STARTED";
+export const STATE_INFO_SUCCESS = "myApp/STATE_INFO_SUCCESS";
+export const STATE_INFO_FAILED = "myApp/STATE_INFO_FAILED";
