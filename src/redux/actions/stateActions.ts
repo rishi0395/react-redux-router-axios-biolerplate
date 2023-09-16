@@ -7,19 +7,25 @@ import {
 import createRequestAction from "../createRequestAction";
 import { getStateInfo } from "../../Api/stateInfoApi";
 
-export const stateInfoStarted = () => ({
-  type: STATE_INFO_STARTED,
-});
+export const stateInfoStarted = () => {
+  return {
+    type: STATE_INFO_STARTED,
+  };
+};
 
-export const stateInfoSuccess = (data) => ({
-  type: STATE_INFO_SUCCESS,
-  payload: data,
-});
+export const stateInfoSuccess = (data) => {
+  return {
+    type: STATE_INFO_SUCCESS,
+    payload: data,
+  };
+};
 
-export const stateInfoFailed = (error) => ({
-  type: STATE_INFO_FAILED,
-  payload: error,
-});
+export const stateInfoFailed = (error) => {
+  return {
+    type: STATE_INFO_FAILED,
+    payload: error,
+  };
+};
 
 export function fetchStateInfo(stateName) {
   return createRequestAction({
@@ -27,13 +33,13 @@ export function fetchStateInfo(stateName) {
     request: () => getStateInfo(stateName),
     onSuccess: (dispatch, resp) => {
       if (Object.keys(resp).length) {
-        dispatch(stateInfoSuccess({}));
+        dispatch(stateInfoSuccess(resp?.data?.hits));
       } else {
-        dispatch(stateInfoFailed("error"));
+        dispatch(stateInfoFailed("No data found..."));
       }
     },
     onFailure: (dispatch, error) => {
-      dispatch(stateInfoFailed(error));
+      dispatch(stateInfoFailed("something went wrong..."));
     },
   });
 }

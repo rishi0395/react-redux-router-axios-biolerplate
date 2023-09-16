@@ -1,14 +1,15 @@
+/* istanbul ignore file */
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-
-import configureStore from "./store";
 import App from "./screens/Routes";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import configureStore from "./store";
+import rootReducer from "./redux/reducer";
 
-const store = configureStore();
+const store = configureStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,7 +18,6 @@ ReactDOM.render(
         <App />
       </BrowserRouter>
     </Provider>
-    ,
   </React.StrictMode>,
   document.getElementById("root")
 );

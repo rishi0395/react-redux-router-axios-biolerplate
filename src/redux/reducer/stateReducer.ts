@@ -7,7 +7,7 @@ import {
 const initialState = {
   isLoading: false,
   error: { isError: false, message: "" },
-  data: {},
+  data: [],
 };
 
 function stateReducer(state = initialState, action) {
@@ -17,6 +17,7 @@ function stateReducer(state = initialState, action) {
     case STATE_INFO_STARTED:
       return {
         ...state,
+        data: [],
         isLoading: true,
         error: { isError: false, message: "" },
       };

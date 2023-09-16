@@ -1,1 +1,2 @@
-export const stateApi = (val) => `https://abc/${val}`;
+export const stateApi = (val) =>
+  `http://hn.algolia.com/api/v1/search/?query=${val}`;
